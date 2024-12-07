@@ -14,7 +14,9 @@ function addBookToLibrary (title, author, pages, hasRead) {
     myLibrary.push(new Book(title, author, pages, hasRead));
 }
 
-
+Book.prototype.toggleRead = function () {
+    this.hasRead = !this.hasRead;
+}
 
 
 const containerDiv = document.querySelector(".container");
@@ -54,6 +56,16 @@ function displayBooks() {
         button.innerText = "Delete";
         card.appendChild(button);
 
+        let toggle = document.createElement("button");
+        toggle.addEventListener("click", () => {
+            myLibrary[card.dataset.indexNumber].toggleRead();
+            clear();
+            displayBooks();
+        })
+
+        toggle.innerText = "Toggle Read";
+        card.appendChild(toggle);
+        toggle.setAttribute("style", "margin-left: 5px;");
         containerDiv.appendChild(card);
     });
 }
