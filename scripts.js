@@ -14,14 +14,11 @@ function addBookToLibrary (title, author, pages, hasRead) {
     myLibrary.push(new Book(title, author, pages, hasRead));
 }
 
-
-
-
 const containerDiv = document.querySelector(".container");
 console.log(containerDiv);
 
 function displayBooks() {
-
+    clear();
     myLibrary.forEach(element => {
         let card = document.createElement("div");
         card.classList.add("card");
@@ -64,20 +61,21 @@ function clear() {
     }
 }
 
-addBookToLibrary("The 1", "JRR Tolkien", 295, false);
-addBookToLibrary("The 2", "JRR Tolkien", 295, false);
+const button = document.querySelector(".add-book");
+const dialog = document.querySelector("dialog");
+button.addEventListener("click", () => {
+    dialog.showModal();
+})
 
-addBookToLibrary("The 3", "JRR Tolkien", 295, false);
-
-addBookToLibrary("The 4", "JRR Tolkien", 295, false);
-
-addBookToLibrary("The 5", "JRR Tolkien", 295, false);
-
-addBookToLibrary("The Hobbit", "JRR Tolkien", 295, false);
-
-addBookToLibrary("The Hobbit", "JRR Tolkien", 295, false);
-
-addBookToLibrary("The Hobbit", "JRR Tolkien", 295, false);
-
+const submit = document.querySelector("form");
+submit.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formProps = Object.fromEntries(formData);
+    addBookToLibrary(formProps["title"], formProps["author"], formProps["pages"], formProps["hasRead"]);
+    displayBooks();
+    dialog.close();
+    console.log(myLibrary);
+})
 
 displayBooks();
