@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Library</title>
     <link rel="stylesheet" href="./styles.css">
     <script src="./scripts.js" defer></script>
 </head>
 <body>
-    <button class="add-book">Add Book</button>
+    <h1>My Library</h1>
     <div class="container">
     </div>
 
@@ -33,12 +33,15 @@
 
                 <div>
                     <label for="hasRead">Finished reading </label>
-                    <input type="checkbox" id="hasRead" name="hasRead">
+                    <input type="checkbox" id="hasRead" name="hasRead" value="true">
                 </div>
             </div>
-
-            <button type="submit" class="submit">Submit</button>
+            <div class="buttons">
+                <button type="submit" class="submit">Submit</button>
+                <button type="button" class="cancel">Cancel</button>
+            </div>
         </form>
     </dialog>
+    <button class="add-book">+</button>
 </body>
 </html>
