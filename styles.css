@@ -78,3 +78,11 @@ button {
     justify-content: center;
 }
 
+input:invalid {
+    border-color: #900;
+    background-color: #fdd;
+}
+
+input:focus:invalid {
+    outline: none;
+}
